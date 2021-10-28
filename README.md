@@ -22,7 +22,13 @@
       curl -L git.io/antigen > antigen.zsh
       ```
 
-3. gdf
+3. borramos el archivo de .zshrc
+      
+      ```
+      rm ~/.zshrc
+      ```
 
-4. 
-
+4. ejecutar el archivo de bash cp
+      ```
+      cpConfig.sh
+      ```
