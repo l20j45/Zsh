@@ -20,7 +20,10 @@ alias vel_red='speedtest-cli --simple'
 alias mi_ip='curl ifconfig.me '
 alias ll='ls -la'
 alias YT2MP3='youtube-dl --embed-thumbnail --audio-quality 0 --extract-audio --audio-format mp3'
-alias YT2MP3='youtube-dl -F'
+alias YT2MP4='youtube-dl -F'
+alias p3='python3'
+alias np='notepad.exe'
+alias eq='explorer.exe .'
 
 # Load Antigen
 source /home/l20j45/antigen.zsh
