@@ -1,0 +1,101 @@
+#! /bin/bash
+
+
+ls -d */ > directorios.dat
+mkdir directory 2>/dev/null
+
+while IFS= read -r line
+do
+  if [ "$line" != "Documents/"  -a "$line" != "Images/" -a "$line" != "Music/" -a "$line" != "Videos/" -a "$line" != "Programs/" -a "$line" != "Scriptin/" -a "$line" != "Work/" -a "$line" != "AccesoDirecto/" ]
+  then
+	mv "$line" directory/ 2>/dev/null
+
+  fi
+done < directorios.dat
+rm directorios.dat
+
+folders=' Documents Images Music Videos Programs Scriptin Work AccesoDirecto'
+ext_doc="*.htm* *.php *.txt *.css *.doc* *.pdf *.PDF *.ppt* *.js *.xlsx *.xls *.djvu *.ttf *.epub *.xlsm *.csv"
+ext_img="*.jp*g *.JPG *.png *.gif *.svg *.ico *.jfif"
+ext_music="*.mp3 *.aac *.wma *.m4a *.ogg"
+ext_vid="*.mp4 *.mkv *.flv *.avi *.webm *.wmv"
+ext_exe="*.exe *.iso *.7z *.torrent *.rar *.zip *.msi"
+ext_work="*.swf *.apk *.sql *.cdr"
+ext_sh="*.sh *.tar *.bash"
+ext_AccesoDirecto="*.ink *.url *.Ink *.lnk"
+
+for folder in $folders
+do
+	if [ $folder == 'Documents' ]
+	then
+		mkdir -p $folder
+		mv $ext_doc $folder 2>/dev/null
+
+	elif [ $folder == 'Images' ]
+	then
+		mkdir -p $folder
+		mv $ext_img $folder 2>/dev/null
+
+	elif [ $folder == 'Music' ]
+	then
+		mkdir -p $folder
+		mv $ext_music $folder 2>/dev/null
+
+	elif [ $folder == 'Videos' ]
+	then
+		mkdir -p $folder
+		mv $ext_vid $folder 2>/dev/null
+
+	elif [ $folder == 'Programs' ]
+        then
+                mkdir -p $folder
+                mv $ext_exe $folder 2>/dev/null
+
+        elif [ $folder == 'Scriptin' ]
+        then
+                mkdir -p $folder
+                mv $ext_sh $folder 2>/dev/null
+
+	elif [ $folder == 'AccesoDirecto' ]
+        then
+                mkdir -p $folder
+                mv $ext_AccesoDirecto $folder 2>/dev/null
+
+	elif [ $folder == 'Work' ]
+        then
+                mkdir -p $folder
+                mv $ext_work $folder 2>/dev/null
+
+	else
+		echo "$(tput setaf 3)Problem creating folder..$(tput sgr0)"
+	fi
+
+done
+
+
+for folderC in $folders
+do
+
+	if [ "$(ls $folderC)" ]
+     then
+	echo ". "
+        
+     else
+         echo "el $folderC está vacío y es eliminado"
+	 rm -d $folderC
+     fi
+
+done
+
+echo "$(tput setaf 2)Successfully organized..$(tput sgr0)"
+
+
+
+
+
+
+
+
+
+
+echo "$(tput setaf 2)Successfully organized..$(tput sgr0)"

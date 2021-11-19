@@ -1,3 +1,18 @@
 #!/bin/bash
 
-for file in *; do sudo mv "$file" `echo $file | tr ' ' '_'`; done
+for f in *
+do
+  new="${f// /_}"
+  if [ "$new" != "$f" ]
+  then
+    if [ -e "$new" ]
+    then
+      echo no se renombró \""$f"\" porque \""$new"\" ya existe
+    else
+      echo renombrando "$f" a "$new"
+    mv "$f" "$new"
+  fi
+fi
+done
+
+echo "se blanquearon los archivos"
