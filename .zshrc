@@ -25,7 +25,6 @@ alias p3='python3'
 alias np='notepad.exe'
 alias eq='explorer.exe .'
 alias bat='batcat'
-<<<<<<< HEAD
 alias ippublica='curl ifconfig.me'
 alias cp='cp -i'
 alias diff='diff -u'
@@ -33,8 +32,6 @@ alias normalDir='/mnt/d/cursos/pythonTrabajo/InterfazPythonSqlV2/movil'
 alias escritorioDir='/mnt/c/Users/winda/Desktop'
 alias sincronizacionDir='/mnt/c/Users/winda/Documents/archivos_softsolutions/Instancias_de_trabajo/Instancias_nuevas/actualizaciones/sincronizacion'
 alias instanciasDir='/mnt/c/Users/winda/Documents/archivos_softsolutions/Instancias_de_trabajo/Instancias_nuevas'
-=======
->>>>>>> 31c740074fc8281fff8964ed47526d946407556c
 # Load Antigen
 source /home/l20j45/antigen.zsh
 # Load Antigen configurations
@@ -46,9 +43,6 @@ antigen init ~/.antigenrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-<<<<<<< HEAD
 
 export PATH=/home/l20j45/.config/composer/vendor/bin/:$PATH
 export PATH=/user/bin:$PATH
-=======
->>>>>>> 31c740074fc8281fff8964ed47526d946407556c
