@@ -1,5 +1,7 @@
 #/bin/bash
 
+#instalar estos paquetes antes de trabajar
+
 sudo apt install pv
 sudo apt install p7zip-full
 sudo apt install p7zip-rar
@@ -14,3 +16,9 @@ sudo apt install ghostscript
 sudo pip install mysql-connector-python
 sudo pip install pyperclip
 sudo pip install termcolor
+sudo apt install lftp
+
+# abrir el archivo de configuraciones de lftp
+# sudo nano /etc/lftp.conf
+# agregar la siguiente linea
+# set ftp:ssl-allow false
