@@ -1,0 +1,34 @@
+#!/bin/bash
+date=$(date +"%d-%b-%Y")
+mkdir respaldos
+while IFS= read -r line
+do
+    delimiter="-"
+    string=$line$delimiter
+    
+    myarray=()
+    while [[ $string ]]; do
+    myarray+=( "${string%%"$delimiter"*}" )
+    string=${string#*"$delimiter"}
+    done
+
+    
+    host=${myarray[1]}
+    user=${myarray[2]}
+    password=${myarray[3]}
+    port=${myarray[4]}
+    db_name=${myarray[0]}
+    nombrefinal=$db_name-$date.sql
+    echo $nombrefinal
+    backup_path="respaldos"
+
+    umask 177
+
+    mysqldump -f --port=$port --user=$user --password=$password --host=$host --ignore-table=$db_name.online_view_app_contratos --ignore-table=$db_name.online_view_app_estado_cobro --ignore-table=$db_name.online_view_historico $db_name | pv --progress --size 100m > $backup_path/$db_name-$date.sql
+	
+done < /mnt/d/cursos/pythonTrabajo/datos.dat
+
+7z a -mx=5 basesDatos$date.7z respaldos -sdel
+
+mv basesDatos$date.7z /mnt/c/Users/winda/OneDrive/Trabajo/respaldos
+#find $backup_path/* -mtime +30 -exec rm {} \;

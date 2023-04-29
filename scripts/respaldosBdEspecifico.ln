@@ -1,0 +1,64 @@
+#!/bin/bash
+date=$(date +"%d-%b-%Y")
+mkdir respaldosEspecifico
+echo "0 sipref"
+echo "1 tequila"
+echo "2 tabasco"
+echo "3 ixtlan"
+echo "4 la paz"
+echo "5 san jorge"
+echo "6 vallarta"
+echo "7 san gaspar"
+echo "8 contreras"
+echo "9 davila"
+echo "10 juchipila"
+echo "11 dev"
+echo "12 local"
+echo "selecciona tu opcion"
+read opcion
+contador=0
+entro=0
+nombreCompilado=""
+while IFS= read -r line
+do
+    delimiter="-"
+    string=$line$delimiter
+    
+    myarray=()
+    while [[ $string ]]; do
+    myarray+=( "${string%%"$delimiter"*}" )
+    string=${string#*"$delimiter"}
+    done
+
+    
+    host=${myarray[1]}
+    user=${myarray[2]}
+    password=${myarray[3]}
+    port=${myarray[4]}
+    db_name=${myarray[0]}
+    nombrefinal=$db_name-$date.sql
+    backup_path="respaldosEspecifico"
+
+    umask 177
+	if [ $contador = $opcion ];
+	then
+		echo "respaldando $db_name"
+		nombreCompilado="$db_name-$date"
+		mysqldump -f --port=$port --user=$user --password=$password --host=$host --ignore-table=$db_name.online_view_app_contratos --ignore-table=$db_name.online_view_app_estado_cobro --ignore-table=$db_name.online_view_historico $db_name | pv --progress --size 100m > $backup_path/$db_name-$date.sql
+		((entro=1))
+
+	fi
+	((contador++))
+	
+done < /mnt/d/cursos/pythonTrabajo/datos.dat
+
+
+if [ $entro = 1 ];
+then
+	echo "se crea el archivo de respaldo"
+	7z a -mx=5 $nombreCompilado.7z respaldosEspecifico -sdel
+	mv $nombreCompilado.7z /mnt/c/Users/winda/OneDrive/Trabajo/respaldos
+else
+echo 'opcion no encontrada'
+exit
+fi

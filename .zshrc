@@ -46,3 +46,10 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=/home/l20j45/.config/composer/vendor/bin/:$PATH
 export PATH=/user/bin:$PATH
+export PATH=/home/l20j45/.local/bin:$PATH
+
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

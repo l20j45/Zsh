@@ -2,6 +2,10 @@
 
 #instalar estos paquetes antes de trabajar
 
+sudo apt update
+sudo apt upgrade
+sudo apt update
+
 sudo apt install pv
 sudo apt install p7zip-full
 sudo apt install p7zip-rar
@@ -13,10 +17,11 @@ sudo apt install unzip
 sudo apt install python3-pip
 sudo apt install xlsx2csv
 sudo apt install ghostscript
-sudo pip install mysql-connector-python
-sudo pip install pyperclip
-sudo pip install termcolor
 sudo apt install lftp
+
+pip install mysql-connector-python
+pip install pyperclip
+pip install termcolor
 
 # abrir el archivo de configuraciones de lftp
 # sudo nano /etc/lftp.conf

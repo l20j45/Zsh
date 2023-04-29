@@ -11,3 +11,9 @@ done < archivosexcel
 
 rm archivosexcel 2> /dev/null
 
+mkdir xlsx 2>/dev/null
+mkdir csv 2>/dev/null
+mv *.xlsx xlsx/
+mv *.csv csv/
+cd csv
+cp junto.csv ../juntosUsar.csv
